@@ -14,7 +14,7 @@
     bottom: 0;
     z-index: 1;
     .caption-content {
-      color: $white;
+      color: $black;
       margin: auto 2rem 2rem;
       h2 {
         font-size: 0.8rem;
@@ -51,7 +51,7 @@
         clip-path: inset(2rem);
       }
       .caption {
-        background-color: fade-out($primary, 0.1);
+        background-color: fade-out(white, 0.1);
         -webkit-clip-path: inset(2rem);
         clip-path: inset(2rem);
       }
