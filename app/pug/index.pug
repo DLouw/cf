@@ -7,6 +7,7 @@ html(lang='en')
     meta(name='author', content='')
     title Cupboard Factory
     link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic', rel='stylesheet', type='text/css')
+    link(href="https://fonts.googleapis.com/css?family=Nunito", rel="stylesheet")
     // Concatenated CSS
     link(href='css/stylesheet.css', rel='stylesheet')
   body#page-top
@@ -38,42 +39,41 @@ html(lang='en')
       </ul>
       </nav>
     // Header
-    header.masthead.bg-light
+    .bg
+    section.masthead
       //.container.text-center
       img.logo.mb-3(src="img/logo.png")
-      a.js-scroll-trigger.mt-3(href='#about')
+      //a.js-scroll-trigger.mt-3(href='#about')
         span.mr-2 Shop Now
         i.fa.fa-angle-right
       //.overlay
     // About
-    section#about.content-section.bg-light
+    section#about.about-section.content-section
       .container.text-center
         .row
           .col-lg-10.mx-auto
-            h2 Stylish Portfolio is the perfect theme for your next project!
+            h2 Simply stylish flat pack cupboards
             p.lead.mb-5
-              | This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-              a(href='https://unsplash.com/') Unsplash
-              | !
-            a.btn.btn-dark.btn-xl.js-scroll-trigger(href='#services') What We Offer
+              | Browse our vast collection of quality items. We offer a complete inventory ranging from floor, wall and tall base kitchen units to full built in cupboards. Various accessories are also available to customize your dream interior.
+            a.btn.btn-primary.btn-xl(href='https://startbootstrap.com/template-overviews/stylish-portfolio/') SHOP NOW
     // Services
-    section#services.content-section.bg-primary.text-white.text-center
+    section#services.content-section.bg-light.text-black.text-center
       .container
         .content-section-heading
-          h3.text-secondary.mb-0 Services
-          h2.mb-5 What We Offer
+          h3.text-secondary.mb-0 Choose your finish
+          h2.mb-5 White Melamine
         .row
           .col-lg-3.col-md-6.mb-5.mb-lg-0
             span.service-icon.rounded-circle.mx-auto.mb-3
               i.icon-screen-smartphone
             h4
-              strong Responsive
+              strong Colour Melamine
             p.text-faded.mb-0 Looks great on any screen size!
           .col-lg-3.col-md-6.mb-5.mb-lg-0
             span.service-icon.rounded-circle.mx-auto.mb-3
               i.icon-pencil
             h4
-              strong Redesigned
+              strong Supagloss
             p.text-faded.mb-0 Freshly redesigned for Bootstrap 4.
           .col-lg-3.col-md-6.mb-5.mb-md-0
             span.service-icon.rounded-circle.mx-auto.mb-3
@@ -94,10 +94,9 @@ html(lang='en')
     section.callout
       .container.text-center
         h2.mx-auto.mb-5
-          | Welcome to
-          em your
-          |         next website!
-        a.btn.btn-primary.btn-xl(href='https://startbootstrap.com/template-overviews/stylish-portfolio/') Download Now!
+          | Customize your cupboards with our</br>
+          | range of quality accesories
+        a.btn.btn-primary.btn-xl(href='https://startbootstrap.com/template-overviews/stylish-portfolio/') Browse Accesories
     // Portfolio
     section#portfolio.content-section
       .container
