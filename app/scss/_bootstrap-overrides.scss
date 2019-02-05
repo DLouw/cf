@@ -1,0 +1,55 @@
+a {
+  color: $primary;
+  &:hover,
+  &:focus,
+  &:active {
+    color: lighten($primary, 10%);
+      text-decoration: none;
+  }
+}
+
+.btn-primary {
+  background-color: transparent !important;
+  border-color: black !important;
+  color: black !important;
+  border-radius: 2px;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(white, 10%) !important;
+    border-color: darken($primary, 10%) !important;
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary !important;
+  border-color: $secondary !important;
+  color: $white !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($secondary, 10%) !important;
+    border-color: darken($secondary, 10%) !important;
+  }
+}
+
+.btn-dark {
+  color: $white !important;
+}
+
+.btn {
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.text-secondary {
+  color: $secondary !important;
+}
