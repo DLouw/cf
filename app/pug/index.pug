@@ -8,8 +8,10 @@ html(lang='en')
     title Cupboard Factory
     link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic', rel='stylesheet', type='text/css')
     link(href="https://fonts.googleapis.com/css?family=Nunito", rel="stylesheet")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.1/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous")
+    
     // Concatenated CSS
-    link(href='css/stylesheet.css', rel='stylesheet')
+    link(href='stylesheet.css', rel='stylesheet')
   body#page-top
     //
       Navigation
@@ -42,7 +44,7 @@ html(lang='en')
     .bg
     section.masthead
       //.container.text-center
-      img.logo.mb-3(src="img/logo.png")
+      img.logo.mb-3(src="logo.png")
       //a.js-scroll-trigger.mt-3(href='#about')
         span.mr-2 Shop Now
         i.fa.fa-angle-right
@@ -55,7 +57,7 @@ html(lang='en')
             h2 Simply stylish flat pack cupboards
             p.lead.mb-5
               | Browse our vast collection of quality items. We offer a complete inventory ranging from floor, wall and tall base kitchen units to full built in cupboards. Various accessories are also available to customize your dream interior.
-            a.btn.btn-primary.btn-xl(href='https://startbootstrap.com/template-overviews/stylish-portfolio/') SHOP NOW
+            a.btn.btn-primary.btn-xl(href='') SHOP NOW
     // Services
     section#services.service-section.content-section.bg-light.text-black.text-center
       .container
@@ -67,24 +69,24 @@ html(lang='en')
             span.service-icon.white-sample.rounded-circle.mx-auto.mb-3
             h4
               strong White Melamine
-            //p.text-faded.mb-0 Looks great on any screen size!
+            a.text-muted.mb-0(href="") view full palette
           .col-lg-4.col-md-6.mb-5.mb-lg-0
             span.service-icon.colour-sample.rounded-circle.mx-auto.mb-3
             h4
               strong Colour Melamine
-            //p.text-faded.mb-0 Freshly redesigned for Bootstrap 4.
+            a.text-muted.mb-0(href="") view full palette
           .col-lg-4.col-md-6.mb-5.mb-lg-0
             span.service-icon.supagloss-sample.rounded-circle.mx-auto.mb-3
             h4
               strong Supagloss
-            //p.text-faded.mb-0 Freshly redesigned for Bootstrap 4.
+            a.text-muted.mb-0(href="") view full palette
     // Callout
     section.callout
       .container.text-center
         h2.mx-auto.mb-5
           | Customize your cupboards with our</br>
           | range of quality accesories
-        a.btn.btn-primary.btn-xl(href='https://startbootstrap.com/template-overviews/stylish-portfolio/') Browse Accesories
+        a.btn.btn-primary.btn-xl(href='') Browse Accesories
     // Portfolio
     section#portfolio.portfolio-section.content-section.bg-light
       .container
@@ -98,28 +100,28 @@ html(lang='en')
                 span.caption-content
                   h2 Floor Units
                   p.mb-0 Available in 870mm height
-              img.img-fluid(src='img/floor.jpg', alt='')
+              img.img-fluid(src='floor.jpg', alt='')
           .col-lg-6
             a.portfolio-item(href='#')
               span.caption
                 span.caption-content
                   h2 Wall Units
                   p.mb-0 Available in 360mm, 720mm or 1080mm height options
-              img.img-fluid(src='img/wall.jpg', alt='')
+              img.img-fluid(src='wall.jpg', alt='')
           .col-lg-6
             a.portfolio-item(href='#')
               span.caption
                 span.caption-content
                   h2 Base Units
                   p.mb-0 Available in 2100mm or 2450mm height options
-              img.img-fluid(src='img/base.jpg', alt='')
+              img.img-fluid(src='base.jpg', alt='')
           .col-lg-6
             a.portfolio-item(href='#')
               span.caption
                 span.caption-content
                   h2 Built in Cupboards
                   p.mb-0 Flat pack built in bedroom cupboards
-              img.img-fluid(src='img/bic.jpg', alt='')
+              img.img-fluid(src='bic.jpg', alt='')
     // Call to Action
     //section.content-section.bg-primary.text-white
       .container.text-center
@@ -133,7 +135,7 @@ html(lang='en')
       small
         a(href='https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&aq=0&oq=twitter&sll=28.659344,-81.187888&sspn=0.128789,0.264187&ie=UTF8&hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&t=m&z=15&iwloc=A')
     // Footer
-    footer.footer.text-center
+    footer.footer-section.text-center
       .container
         ul.list-inline.mb-5
           li.list-inline-item
@@ -150,4 +152,4 @@ html(lang='en')
     a.scroll-to-top.rounded.js-scroll-trigger(href='#page-top')
       i.fas.fa-angle-up
     // Custom scripts for this template
-    script(src='js/bundle.js')
+    script(src='bundle.js')

@@ -1,5 +1,5 @@
 .masthead {
-  z-index: 0;
+  //z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
   height: auto;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background-color: rgba(black,0.3);
+  background-color: rgba(black,0);
   //background: linear-gradient(90deg, fade-out($white, 0.9) 0%, fade-out($white, 0.9) 100%), url('../img/bg-masthead.jpg');
   background-position: center center;
   background-repeat: no-repeat;

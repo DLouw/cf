@@ -1,0 +1,369 @@
+doctype html
+html(lang='en')
+  head
+    include includes/analytics.pug
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='gw home')
+    meta(name='author', content='Dehan Louw')
+    title signaturestone
+    // Bootstrap core CSS
+    link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // Custom fonts for this template
+    link(rel='stylesheet', href='vendor/font-awesome/css/all.css')
+    link(rel='stylesheet', href='vendor/simple-line-icons/css/simple-line-icons.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Muli', rel='stylesheet')
+    link(href='vendor/slick-carousel/slick/slick.css', rel='stylesheet')
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.1/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous")
+    // Plugin CSS
+    //link(rel='stylesheet', href='device-mockups/device-mockups.min.css')
+    // Custom styles for this template
+    link(href='css/stylesheet.min.css', rel='stylesheet')
+    //Favicon
+    link(rel="icon", href="img/favicon.png")
+  body.products-page#page-top
+    //include includes/splash.pug
+    // Navigation
+    include includes/navbar.pug
+    //header
+    section.header-section.parallax-parent
+        .over-wrap
+          h1 Products
+        .bg-parallax
+    //intro section
+    section.intro-section.center-xy
+        .container
+          h2.text-center.m-0 Lose yourself in our extensive collection of premium stone surfaces
+    //gallery section
+    section.gallery-section#productArea.p-0
+      include includes/quoteModal.pug
+      .container.p-0
+        .card.mb-3
+          .card-header
+              a(data-toggle="collapse", data-target="#filters")
+                i.mr-1.fa.fa-sliders-h
+                span Filters
+              #filters.container.collapse
+                .row
+                  //.col-md-4.pt-3
+                    h4.filter-title Brand
+                    hr
+                    .filter-list(data-bind="foreach: brandsAvailable")
+                      .check-item
+                        input.checkbox(type="checkbox", data-bind="click: function(){$root.toggl eBrandFilter($data); return true;}, checked: $root.brandFilter.indexOf($data) != -1")
+                        label(data-bind="text: $data")
+                  .col-6.col-md-4.pt-3
+                    h4.filter-title Stone
+                    hr
+                    .filter-list(data-bind="foreach: typesAvailable")
+                      .check-item
+                        input.checkbox(type="checkbox", data-bind="click: function(){$root.toggleTypeFilter($data); return true;}, checked: $root.typeFilter.indexOf($data) != -1")
+                        label(data-bind="text: $data")
+                    a(href="", data-toggle="modal", data-target="#stoneModal")
+                      p Not sure?
+                  //.col-6.col-md-4.pt-3
+                    h4.filter-title Thickness
+                    hr
+                    .filter-list(data-bind="foreach: thicknessAvailable")
+                      .check-item
+                        input.checkbox(type="checkbox", data-bind="click: function(){$root.toggleThicknessFilter($data); return true;}, checked: $root.thicknessFilter.indexOf($data) != -1")
+                        label(data-bind="text: $data")
+                  //.col-md-4.pt-3
+                    h4.filter-title Price
+                    hr
+                    .filter-list
+                      span.d-inline.mr-3 R 0
+                      input.d-inline.slider.mt-1(type="range", min="0", data-bind="value:maxPrice, valueUpdate: 'input', attr: {max: priceUpperLimit}")
+                      span.d-inline.ml-3(data-bind="text:'R ' + maxPrice() + ' /Sqm'")
+                  .col-md-4.pt-3
+                    h4.filter-title Sort
+                    hr
+                    a.mr-3(data-bind="click: function(){nameSort(!nameSort())}")
+                      i.fa.fa-arrow-down(data-bind="css: {'fa-arrow-up': $root.nameSort()}")
+                      span name
+                    a(data-bind="click: function(){priceSort(!priceSort())}")
+                      i.fa.fa-arrow-down(data-bind="css: {'fa-arrow-up': $root.priceSort()}")
+                      span price
+                  .col-12.mt-3.text-right
+                    //a(data-bind="click: $root.applyFilters") Apply
+                    a(data-bind="click: $root.clearFilters") clear all
+                    span.mx-2 |
+                    a
+                      .fa.fa-chevron-up(data-toggle="collapse", data-target="#filters")
+          .card-body.p-0
+            .warehouse(data-bind="foreach: products")
+              //p(data-bind="text: $data.name")
+              .card.product-card.m-1.m-md-3(data-bind="visible: $data.show(), click: $root.getQuote, css: {selectable: $root.counterSqm() > 0}")
+                //a.btn-get-quote(data-bind="click: $root.getQuote, clickBubble: false, visible: $root.counterSqm() > 0")
+                //.card-header
+                    a.btn.btn-primary(data-bind="click: $root.doStuff, clickBubble: false")
+                .card-body 
+                  //.contrast-corner
+                  .background(data-bind="style: { 'background-image': 'url(' + $data.image() + ')'}")
+                  .favourite-container
+                    a.btn.favourite(data-bind="click: $root.toggleFavourites, clickBubble: false")
+                      .far.fa-star(data-bind="css: {fas: $root.favourites.indexOf($data.name) != -1}")
+                  .promo-container
+                    a.btn.certificate(data-toggle="tooltip", title="On promotion!" data-bind="visible: $data.promo() == 'true'")
+                      p.m-0 on promotion
+                  .product-admin-container(data-bind="visible: $root.loginStatus")
+                    a.remove.ml-2(data-bind="click: $root.deleteProduct, clickBubble: false")
+                        .fa.fa-times
+                    a.edit.ml-2(data-bind="click: $root.editProduct, clickBubble: false")
+                        .fa.fa-pen
+                    a.ml-2(data-bind="click: $root.addProduct, clickBubble: false") 
+                      .fa.fa-plus
+                .card-footer
+                  .row
+                    .col-md-7.text-md-left.text-center
+                      h4.card-title.mb-1.p-0(data-bind="text: $data.name")
+                    .col-md-5.text-md-right.text-center
+                      p.product-price.text-muted.mb-1(data-bind="text: 'R' + $data.calculatedCost(), visible: $root.counterSqm() > 0")
+                      p.product-price.text-muted.mb-1(data-toggle="tooltip", title="A linear meter is a 1 meter long, 600mm wide section of material ", data-bind="text: 'R' + $data.price_lm() + '/lm', visible: $root.counterSqm() <= 0")
+                    .col-md-8.text-left.brand-line.text-md-left
+                      p.card-text.text-muted(data-bind="text: $data.brand()")
+                      //p.card-text.text-muted(data-bind="text: $data.brand() + ' | ' + $data.thickness() +'mm'")
+                    .col-md-4.text-md-right.text-center
+                      a.text-center.btn-details(data-bind="click: $root.viewProduct, clickBubble: false")
+                        span.mr-2 view
+                        i.fa.fa-angle-right
+          .card-footer.px-1
+            a.m-3.js-scroll-trigger(href="#productArea")
+              .fa.fa-angle-up
+              span Back to top
+            //a.btn.btn-theme.mx-1(data-bind="click: loadProducts")
+              .fa.fa-retweet
+              span Refresh
+            //a.btn.btn-secondary.btn-slick.mx-1(data-bind="click: $root.slk")
+              .fa.fa-angle-right
+              span Slick
+            //a.btn.btn-secondary.btn-unslick.mx-1(data-bind="click: $root.unslk")
+              .fa.fa-angle-right
+              span Unslick
+      #noProductsModal.modal.fade
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.text-center
+              p Please select one or more products first
+              img(src="img/selectProduct.png")
+            .modal-footer
+              a.btn.btn-theme.m-2(href='#', data-toggle='modal', data-target='#noProductsModal')
+                span.mr-3 close
+                i.fa.fa-angle-right
+      #stoneModal.modal.fade
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h4 Stone types
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.text-left
+              h3.mt-2 Granite
+              p Granite is a natural, luxurious stone. It bears its natural colour, just as we found it. It is very durable, and possesses unsurpassed longevity. It does require re-sealing every year or so, but is otherwise a very low maintenance, robust stone.
+              h3.mt-2 Quartz
+              p Quartz has many of the qualities of granite, but is engineered rather than natural. This comes with the added benefit of beautiful, uniform gradients and a more flamboyant colour palette. Quartz is engineered not to need any sealants or routine maintenance.
+              h3.mt-2 Marble
+              p Perhaps the most luxurious and unique option, Marble can be seen to have beautiful and intricate natural veins and details. A stunning, natural surface, but one that does require more maintenance, and is somewhat more fragile than the others.
+            .modal-footer
+              a.btn.btn-theme.m-2(href='#', data-toggle='modal', data-target='#stoneModal')
+                span.mr-3 close
+                i.fa.fa-angle-right
+      //Product modal
+      #productModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='basicModal', aria-hidden='true', data-bind="with: selectedProduct")
+        .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.p-0
+              .preview(data-bind="style: { 'background-image': 'url(' + $data.image() + ')'}")
+                .favourite-container
+                  a.btn.favourite(data-bind="click: $root.toggleFavourites,  clickBubble: false")
+                    .far.fa-star(data-bind="css: {fas: $root.favourites.indexOf($data.name) != -1}")
+            .modal-footer.d-block
+              h3(data-bind="text: $data.name")
+              p.text-muted(data-bind="text: $data.description")
+              br
+              h4 
+                | Stone:
+                span.text-muted.ml-2(data-bind="text: $data.stone")
+              h4 
+                | Brand:
+                span.text-muted.ml-2(data-bind="text: $data.brand")
+              h4 
+                | Slab Size:
+                span.text-muted.ml-2(data-bind="text: $data.slablength() + 'mm' + ' x ' + $data.slabwidth() + 'mm'")
+              br
+              //h3 Price
+              //h4 
+                | 13mm Price:
+                span.text-muted.ml-2(data-bind="text: $data().price13mm > 0 ? 'R ' + $data().price13mm_sqm + ' /Sqm' : 'Not Available'")
+              //h4 
+                | 20mm Price:
+                span.text-muted.ml-2(data-bind="text: $data().price20mm > 0 ? 'R ' + $data().price20mm_sqm + ' /Sqm' : 'Not Available'")
+              //h4 
+                | 30mm Price:
+                span.text-muted.ml-2(data-bind="text: $data().price30mm > 0 ? 'R ' + $data().price30mm_sqm + ' /Sqm' : 'Not Available'")
+            .modal-footer
+              a.btn.btn-theme.m-2(href='#', data-toggle='modal', data-target='#productModal')
+                span.mr-3 close
+                i.fa.fa-angle-right
+              //a.btn.btn-theme.btnFavourite.m-2(data-bind="click: function(){$root.addToFavourites($data())}")
+                span.mr-3 favourite
+                .far.fa-star(data-bind="css: {fas: $root.favourites.indexOf($data().name) != -1}")
+          //Product modal
+      #productAdminmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='basicModal', aria-hidden='true', data-bind="with: selectedProduct")
+        .modal-dialog.modal-md
+          .modal-content
+            .modal-header
+              h4.modal-title Product admin
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.container
+              h3 Enter products details
+              form#product-form(method='post', enctype='multipart/form-data',role='form', data-bind="submit: $root.postProduct")
+                .controls
+                  .row
+                    .form-group
+                      input#form_id.form-control(type='hidden', name='product_id', data-bind="value: $data.product_id")
+                    .form-group.col-6
+                      label Name *
+                      input.form-control(type='text', name='name', placeholder='Enter product name *', required='required', data-bind="value: $data.name")
+                    .form-group.col-6
+                      label Brand *
+                      input.form-control(type='text', name='brand', placeholder='Enter brandname *', required='required', data-bind="value: $data.brand")
+                    .form-group.col-12
+                      label Stone
+                      .radio.m-3
+                        label.radio-inline.m-2(for='form_stone')
+                          input(type='radio', name='stone', value="Granite", data-bind="checked: $data.stone")
+                          span.ml-2 Granite
+                        label.radio-inline.m-2(for='form_stone')
+                          input(type='radio', name='stone', value="Marble", data-bind="checked: $data.stone")
+                          span.ml-2 Marble
+                        label.radio-inline.m-2(for='form_stone')
+                          input(type='radio', name='stone', value="Quartz", data-bind="checked: $data.stone")
+                          span.ml-2 Quartz
+                  .row
+                    .form-group.col-4
+                      label(for='form_slabwidth') Slab width *
+                        .input-group
+                          input.form-control(type='number', name='slabwidth', placeholder='*', required='required', data-bind="value: $data.slabwidth")
+                          .input-group-append
+                            span.input-group-text mm
+                    .form-group.col-4
+                      label(for='form_slablength') Slab length *
+                        .input-group
+                          input.form-control(type='number', name='slablength', placeholder='*', required='required', data-bind="value: $data.slablength")
+                          .input-group-append
+                            span.input-group-text mm
+                    .form-group.col-4
+                      label(for='form_thickness') Thickness *
+                        .input-group
+                          input.form-control(type='number', name='thickness', placeholder='*', required='required', data-bind="value: $data.thickness")
+                          .input-group-append
+                            span.input-group-text mm
+                  .row
+                    .form-group.col-6
+                      label(for='form_price_slab') Slab price
+                      .input-group
+                        .input-group-prepend
+                          span.input-group-text R
+                        input.form-control(type='number', step="0.01", name='price_slab', placeholder='0', data-bind="value: $data.price_slab")
+                    .form-group.col-6
+                      .input-group.p-3.mt-3
+                        label.form-check-label On promotion
+                        input.form-check-input(type='checkbox', name='promo', data-bind="checked: $data.promo")
+                    .form-group.col-12
+                      label(for='form_message') Description *
+                      textarea.form-control(name='description', placeholder='Product description *', rows='4', required='required', data-bind="value: $data.description")
+                    .form-group.col-12
+                      label(for='form_image') Image *
+                      input.form-control(name='image', type='file', accept="image/*")
+                    .col-12.text-right
+                      input.btn.btn-theme.m-1(type='submit', value='Submit +')
+      #productAddModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='basicModal', aria-hidden='true')
+        .modal-dialog.modal-md
+          .modal-content
+            .modal-header
+              h4.modal-title Add a new product
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body.container
+              h3 Enter products details
+              form#productAddForm(method='post', enctype='multipart/form-data',role='form', data-bind="submit: $root.postProduct")
+                .controls
+                  .row
+                    .form-group.col-6
+                      label Name *
+                      input.form-control(type='text', name='name', placeholder='Enter product name *', required='required')
+                    .form-group.col-6
+                      label Brand *
+                      input.form-control(type='text', name='brand', placeholder='Enter brandname *', required='required')
+                    .form-group.col-12
+                      label Stone
+                      .radio.m-3
+                        label.radio-inline.m-2(for='form_stone')
+                          input(type='radio', name='stone', value="Granite")
+                          span.ml-2 Granite
+                        label.radio-inline.m-2(for='form_stone')
+                          input(type='radio', name='stone', value="Marble")
+                          span.ml-2 Marble
+                        label.radio-inline.m-2(for='form_stone')
+                          input(type='radio', name='stone', value="Quartz")
+                          span.ml-2 Quartz
+                  .row
+                    .form-group.col-4
+                      label(for='form_slabwidth') Slab width *
+                        .input-group
+                          input.form-control(type='number', name='slabwidth', placeholder='*', required='required')
+                          .input-group-append
+                            span.input-group-text mm
+                    .form-group.col-4
+                      label(for='form_slablength') Slab length *
+                        .input-group
+                          input.form-control(type='number', name='slablength', placeholder='*', required='required')
+                          .input-group-append
+                            span.input-group-text mm
+                    .form-group.col-4
+                      label(for='form_thickness') Thickness *
+                        .input-group
+                          input.form-control(type='number', name='thickness', placeholder='*', required='required')
+                          .input-group-append
+                            span.input-group-text mm
+                  .row
+                    .form-group.col-6
+                      label(for='form_price_slab') Slab price
+                      .input-group
+                        .input-group-prepend
+                          span.input-group-text R
+                        input.form-control(type='number', step="0.01", name='price_slab', placeholder='0')
+                    .form-group.col-6
+                      .input-group.p-3.mt-3
+                        label.form-check-label On promotion
+                        input.form-check-input(type='checkbox', name='promo')
+                    .form-group.col-12
+                      label(for='form_message') Description *
+                      textarea.form-control(name='description', placeholder='Product description *', rows='4', required='required')
+                    .form-group.col-12
+                      label(for='form_image') Image *
+                      input.form-control(name='image', type='file', accept="image/*")
+                    .col-12.text-right
+                      input.btn.btn-theme.m-1(type='submit', value='Submit +')
+            //.modal-footer
+              input.btn.btn-theme.m-1(type='button', data-dismiss='modal', aria-label='Close', value="Cancel")
+    //footer
+    include includes/footer.pug
+    //More modals
+    include includes/coreModals.pug
+    include includes/js/coreScripts.pug
+    include includes/js/coreVMs.pug
+    //script(src="js/loginVM.min.js")
+    script(src="js/productVM.min.js")
+    
+

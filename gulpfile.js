@@ -48,7 +48,7 @@ gulp.task('copy', function() {
 
   //Images
   gulp.src(['app/img/**/*'])
-    .pipe(gulp.dest('./dist/img'))
+    .pipe(gulp.dest('./dist'))
     
   // jQuery
   gulp.src([
@@ -70,17 +70,17 @@ gulp.task('copy', function() {
     ])
     .pipe(gulp.dest('./app/vendor/bootstrap'))
 
-  // Font Awesome
-  gulp.src([
-      './node_modules/@fortawesome/fontawesome-free/css/all.min.css',
-    ])
-    .pipe(gulp.dest('./app/vendor/fontawesome-free'))
- 
-// Font Awesome webfonts
- gulp.src([
-      './node_modules/@fortawesome/fontawesome-free/webfonts/*',
-    ])
-    .pipe(gulp.dest('./dist/webfonts'))
+//  // Font Awesome
+//  gulp.src([
+//      './node_modules/@fortawesome/fontawesome-free/css/all.min.css',
+//    ])
+//    .pipe(gulp.dest('./app/vendor/fontawesome-free'))
+// 
+//// Font Awesome webfonts
+// gulp.src([
+//      './node_modules/@fortawesome/fontawesome-free/webfonts/*',
+//    ])
+//    .pipe(gulp.dest('./dist/fonts'))
     
     
 
@@ -91,7 +91,7 @@ gulp.task('pack-css', function () {
                      './app/vendor/fontawesome-free/all.min.css',
                      './app/css/stylish-portfolio.css'])
         .pipe(concat('stylesheet.css'))
-        .pipe(gulp.dest('./dist/css'))
+        .pipe(gulp.dest('./dist'))
         .pipe(browserSync.reload({
           stream: true
         }));
@@ -136,7 +136,7 @@ gulp.task('pack-js', function () {
                      './app/js/stylish-portfolio.js'
                     ])
         .pipe(concat('bundle.js'))
-        .pipe(gulp.dest('./dist/js'))
+        .pipe(gulp.dest('./dist'))
         .pipe(browserSync.reload({
           stream: true
         }));
