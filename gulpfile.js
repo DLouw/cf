@@ -159,7 +159,7 @@ gulp.task('browserSync', function() {
 gulp.task('dev', ['browserSync', 'sass', 'pack-css', 'pack-js', 'pug'], function() {
   gulp.watch('app/scss/*.scss', ['sass']);
   gulp.watch('app/pug/**/*', ['pug']);
-  gulp.watch('app/css/*.css', ['pack-css']);
+  gulp.watch('app/css/*.css', ['sass', 'pack-css']);
   gulp.watch('app/js/*.js', ['pack-js']);
   // Reloads the browser whenever HTML or JS files change
   gulp.watch('app/*.html', browserSync.reload);
