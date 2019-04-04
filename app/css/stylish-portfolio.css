@@ -198,11 +198,50 @@ footer.footer {
       background-color: black;
       text-decoration: none; }
 
+a {
+  color: black; }
+  a:hover, a:focus, a:active {
+    color: #1a1a1a;
+    text-decoration: none; }
+
+.btn-primary {
+  background-color: transparent !important;
+  border-color: black !important;
+  color: black !important;
+  border-radius: 2px; }
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #e6e6e6 !important;
+    border-color: black !important; }
+
+.btn-secondary {
+  background-color: #ecb807 !important;
+  border-color: #ecb807 !important;
+  color: #fff !important; }
+  .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+    background-color: #ba9106 !important;
+    border-color: #ba9106 !important; }
+
+.btn-dark {
+  color: #fff !important; }
+
+.btn {
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
+  font-weight: 700; }
+
+.bg-primary {
+  background-color: black !important; }
+
+.text-primary {
+  color: black !important; }
+
+.text-secondary {
+  color: #ecb807 !important; }
+
 #faq-section .btn {
   box-shadow: none !important;
-  background-color: none !important; }
+  background-color: transparent !important; }
   #faq-section .btn:hover {
-    background-color: none !important; }
+    background-color: transparent !important; }
 
 #faq-section .faq-nav {
   flex-direction: column;
@@ -267,42 +306,3 @@ footer.footer {
 
 #faq-section .collapse.show .card-body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
-
-a {
-  color: black; }
-  a:hover, a:focus, a:active {
-    color: #1a1a1a;
-    text-decoration: none; }
-
-.btn-primary {
-  background-color: transparent !important;
-  border-color: black !important;
-  color: black !important;
-  border-radius: 2px; }
-  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    background-color: #e6e6e6 !important;
-    border-color: black !important; }
-
-.btn-secondary {
-  background-color: #ecb807 !important;
-  border-color: #ecb807 !important;
-  color: #fff !important; }
-  .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
-    background-color: #ba9106 !important;
-    border-color: #ba9106 !important; }
-
-.btn-dark {
-  color: #fff !important; }
-
-.btn {
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
-  font-weight: 700; }
-
-.bg-primary {
-  background-color: black !important; }
-
-.text-primary {
-  color: black !important; }
-
-.text-secondary {
-  color: #ecb807 !important; }
