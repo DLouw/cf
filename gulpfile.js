@@ -130,7 +130,8 @@ gulp.task('pack-css', function () {
 
 //Concat Tasks
 gulp.task('pack-js', function () {    
-    return gulp.src(['./app/vendor/jquery/jquery.min.js',
+    return gulp.src([
+                    './app/vendor/jquery/jquery.min.js',
                      './app/vendor/bootstrap/bootstrap.bundle.min.js',
                      './app/vendor/jquery-easing/jquery.easing.min.js',
                      './app/js/stylish-portfolio.js'

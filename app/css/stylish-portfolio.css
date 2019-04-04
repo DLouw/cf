@@ -198,6 +198,12 @@ footer.footer {
       background-color: black;
       text-decoration: none; }
 
+#faq-section .btn {
+  box-shadow: none !important;
+  background-color: none !important; }
+  #faq-section .btn:hover {
+    background-color: none !important; }
+
 #faq-section .faq-nav {
   flex-direction: column;
   margin: 0 0 32px;

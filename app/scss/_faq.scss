@@ -1,5 +1,14 @@
 // FAQ
 #faq-section{
+  
+  .btn{
+    box-shadow: none !important;
+    background-color: none !important;
+    &:hover{
+      background-color: none !important;
+    }
+    
+  }
     
     .faq-nav {
         flex-direction: column;
